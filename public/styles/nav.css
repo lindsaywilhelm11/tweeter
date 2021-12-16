@@ -1,0 +1,30 @@
+.nav {
+  height: 120px;
+  background-color: #628395;
+  color: #FFFFFF;
+  padding: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.nav-span {
+  display: flex;
+  justify-content: left;
+  font-family: 'Bungee', sans-serif;
+}
+
+.paragraph1 {
+  display: flex;
+  justify-content: right;
+}
+
+.icon {
+  height: 40px;
+  position: absolute;
+  top: 70%;
+  left: 95%
+}

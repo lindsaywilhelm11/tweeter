@@ -1,0 +1,133 @@
+/* 320px — 480px: Mobile devices.
+481px — 768px: iPads, Tablets.
+769px — 1024px: Small screens, laptops.
+1025px — 1200px: Desktops, large screens.  */
+
+/* @media screen and (max-width: 481px) {
+
+};
+@media screen and (max-width: 768px) {
+
+};
+@media screen and (max-width: 1024px) {
+
+};
+@media screen and (max-width: 1200px) {
+
+}; */
+
+hr {
+    height: 3px;
+    width: 475px;
+    background-color: #33313B;
+}
+
+/*************** Compose Tweet Box ****************/
+.new-tweet {
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+    background-color: #FDFAF6;
+    width: 500px;
+}
+
+.counter {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-family: 'Bungee', sans-serif;
+}
+
+.button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    float: left;
+    font-family: 'Bungee', sans-serif;
+    background-color: #FFE3E3;
+    color: #33313B;
+}
+
+/*************** Sent Tweet ****************/
+
+/* Header */
+
+.tweet-container {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Source Sans 3', sans-serif;
+  border-style: solid;
+  border-color: #33313B;
+  box-shadow: 5px 10px #33313B;
+  flex-direction: column;
+  border-bottom: 20%;
+  border-bottom: 20%;
+}
+
+.tweet-header {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  margin-right: 0 auto;
+}
+
+.tweet-img {
+    display: flex;
+    justify-content: center;
+    padding-left: 5%;
+    height: 50px;
+}
+
+.tweet-name {
+  display: flex;
+  justify-content: left;
+  padding-left: 5%;
+  height: 30px;
+}
+
+.tweet-handle {
+    display: flex;
+    justify-content: right;
+    padding-left: 50%;
+    padding-right: 0;
+    word-wrap: break-word;
+}
+
+/* Footer */
+
+.tweet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0 auto;
+  margin-top: 1%;
+}
+
+.timeago {
+    display: flex;
+    font-size: medium;
+    justify-content: flex-start;
+    padding: 2% 3% 
+}
+
+.tweet-icons {
+    display: flex;
+    justify-content: right;
+    padding-right: 3%;
+    font-size: medium;
+    text-align: left;
+}
+
+.tweet-icons :hover {
+    color: #628395;
+}
+

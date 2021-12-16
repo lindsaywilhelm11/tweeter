@@ -1,0 +1,12 @@
+.header {
+    height: 400px;
+    width: 100%;
+    margin-top: 120px;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   text-align: center;
+    background-color: #FFE3E3;
+    background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
+}
