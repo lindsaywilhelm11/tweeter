@@ -1,5 +1,3 @@
-let $;
-
 const escape = (str) => {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -78,7 +76,7 @@ $('.tweet-form').on('submit', (e) => {
       .fail((err) => {
         console.log(err);
       })
-  }); 
+  })
 
   const loadTweets = () => {
     $.ajax({
@@ -90,8 +88,8 @@ $('.tweet-form').on('submit', (e) => {
   })
       .fail((err) => {
         console.log(err);
-    });
-  };
+    })
+  }
   loadTweets();
 });
 
