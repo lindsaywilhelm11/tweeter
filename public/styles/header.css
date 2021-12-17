@@ -10,3 +10,25 @@
     background-color: #FFE3E3;
     background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
 }
+
+@media screen and (max-width: 481px) {
+    header {
+      width: 25%;;
+    }
+    header-img {
+        width: 15%;
+        height: 15%;
+    }
+  };
+
+  @media screen and (max-width: 768px) {
+    header {
+      width: 50%
+    }
+  };
+
+  @media screen and (max-width: 1024px) {
+    header {
+        width: 75%;
+      }
+};

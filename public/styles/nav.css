@@ -28,3 +28,16 @@
   top: 70%;
   left: 95%
 }
+
+@media screen and (max-width: 481px) {
+  nav {
+    width: 25%;
+    flex-direction: column;
+  }
+};
+
+@media screen and (max-width: 768px) {
+  nav {
+    width: 50%
+  }
+};
