@@ -4,13 +4,13 @@ Tweeter is a simple, single-page Twitter clone made by Lindsay Wilhelm for the L
 
 ## Final Product
 
-!["Main Page Header"]()
+!["Main Page Header"](https://github.com/lindsaywilhelm11/tweeter/blob/master/docs/main-tweeter.png?raw=true)
 
-!["Main Page Tweets"]()
+!["Main Page Tweets"](https://github.com/lindsaywilhelm11/tweeter/blob/master/docs/main-tweets.png?raw=true)
 
-!["Responsive Header"]()
+!["Responsive Header"](https://github.com/lindsaywilhelm11/tweeter/blob/master/docs/responsive-tweeter.png?raw=true)
 
-!["Responsive Tweets"]()
+!["Responsive Tweets"](https://github.com/lindsaywilhelm11/tweeter/blob/master/docs/responsive-tweets.png?raw=true)
 
 
 ## To Run This Project
