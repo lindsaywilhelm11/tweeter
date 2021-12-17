@@ -1,105 +1,130 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+const tweets = [
+//     {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//     ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+// },
+// {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+// }
+];
+
+const escape = (str) => {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+const createTweetElement = function(tweet) {
+    let $tweet = $("<article>").addClass('tweet') 
+    let tweetLayout = `
+    <section class="tweet-container">
+    <article class="tweet">
+          <header class="tweet-header">
+          <img class="tweet-img" src="${tweet.user.avatars}"> 
+           <div>
+          <p class="tweet-name">${tweet.user.name}</p>
+        </div>
+             <br />
+            <p class="tweet-handle">${tweet.user.handle}</p>
+           </header>
+           <p class="tweet-message">${escape(tweet.content.text)}</p>
+          <hr>
+          <footer class="tweet-footer">
+             <p class="timeago">${(timeago.format(tweet.created_at))}</p>
+            <div class="tweet-icons">
+              <i class="fas fa-flag"></i>
+              <i class="fas fa-retweet"></i>
+              <i class="fas fa-heart"></i>
+           </div>
+          </footer>
+          <br>
+        </article>
+        </section>
+    `;
+
+    let tweetElement = $tweet.append(tweetLayout);
+    return tweetElement;
+  }
+
+const renderTweets = (tweets) => {
+     $('tweet-section').empty();
+    for (let tweet in tweets) {
+      let $newTweet = createTweetElement(tweet);
+      $('.tweet-section').prepend($newTweet);
+    }
+}
+
+
 
 $(document).ready(function() {
-    //   const tweetData = [
-    //     {
-    //       "user": {
-    //         "name": "Newton",
-    //         "avatars": "https://i.imgur.com/73hZDYK.png"
-    //         ,
-    //         "handle": "@SirIsaac"
-    //       },
-    //       "content": {
-    //         "text": "If I have seen further it is by standing on the shoulders of giants"
-    //       },
-    //       "created_at": 1461116232227
-    //     },
-    //     {
-    //       "user": {
-    //         "name": "Descartes",
-    //         "avatars": "https://i.imgur.com/nlhLi3I.png",
-    //         "handle": "@rd" },
-    //       "content": {
-    //         "text": "Je pense , donc je suis"
-    //       },
-    //       "created_at": 1461113959088
-    //     }
-    //   ]
     
-    
-      const renderTweets = function(tweets) {
-        // loops through tweets
-        for (let tweet in tweets) {
-        // calls createTweetElement for each tweet
-            let $newTweet = createTweetElement(tweets[tweet]);
-        // takes return value and appends it to the tweets container
-            $('.tweet-container').append($newTweet);
-        }
-      }
-    
-      const loadTweets = () => {
-        $.ajax({
-        url: '/tweets/',
-        method: 'GET',
-        dataType: 'JSON',
-        success : (data) => {
-            console.info("Success!");
-            $('.tweet').empty();
-            renderTweets(data);
-        },
-        failure: err => {
-            console.log(err);
-        }
+
+$('.tweet-form').on('submit', (e) => {
+    e.preventDefault();
+
+    $('.error').slideUp();
+
+    let lengthOfTweet = $(".tweet-text").val().length;
+    if(lengthOfTweet === 0 || lengthOfTweet === null) {
+      $('.error').html("<p>Please add a message before tweeting!</p>")
+      $('.error').slideDown('slow');
+        return;
+    }
+
+    if (lengthOfTweet > 140) {
+      $('.error').html("<p>This tweet is way too long! Try again.</p>")
+      $('.error').slideDown('slow');
+      return;
+    } 
+
+    const data = $(this).serialize();
+    console.log(data);
+
+    $.ajax({
+        method: "POST",
+        url: 'http://localhost:8080/tweets',
+        data: data
       })
-      }
-    
-      loadTweets();
-      
-      const createTweetElement = function(tweet) {
-        let $tweet = /* Your code for creating the tweet element */ `
-        <section class="tweet-container">
-        <article class="tweet">
-              <header class="tweet-header">
-              <img class="tweet-img" src="${tweet.user.avatars.small}"> 
-               <div>
-              <p class="tweet-name">${tweet.user.name}</p>
-            </div>
-                 <br />
-                <p class="tweet-handle">${tweet.user.handle}</p>
-               </header>
-               <p class="tweet-message">${tweet.content.text}</p>
-              <hr>
-              <footer class="tweet-footer">
-                 <p class="timeago">${(timeago.format(tweet.created_at))}</p>
-                <div class="tweet-icons">
-                  <i class="fas fa-flag"></i>
-                  <i class="fas fa-retweet"></i>
-                  <i class="fas fa-heart"></i>
-               </div>
-              </footer>
-              <br>
-            </article>
-            </section>
-        `;
-        return $tweet;
-      }
-      
-    
-    $(".tweet-form").on("submit", function(e) {
-        console.log('Success!')
-        e.preventDefault();
-        console.log( $( this ).serialize() );
-        $.ajax({
-            url: '/tweets/',
-            method: 'POST',
-            data: $( this ).serialize()
-        })
-        .done((results) => {
-            console.log(results); // array of objects
-        })
-      });
+        .done(() => {
+          loadTweets();
+          $(".tweet-text").val("");
+          $(".counter").text(140);
+      })
+        .fail((err) => {
+          console.log(err)
     })
+    loadTweets(); 
+  }); 
+  const loadTweets = () => {
+    $.ajax({
+      url: 'http://localhost:8080/tweets',
+      method: 'GET'
+    })
+    .done((result) => {
+        renderTweets(result)
+    })
+    .fail((err) => {
+        console.log(err)
+    })
+  }
+  loadTweets();
+})
+
+
+
+

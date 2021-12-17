@@ -49,8 +49,8 @@
     
     </nav>
     <header class="header">
-      <div class="header-img">
-          <img src="/images/profile-hex.png"> 
+      <div >
+          <img class="header-img" src="/images/profile-hex.png"> 
       </div>
       <br>
       <div class="header-text">
@@ -61,18 +61,20 @@
     <!-- Page-specific (main) content here -->
     <main class="main">
       <section class="new-tweet">
+      <section class="error"></section>
         <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets/" class="tweet-form">
-          <textarea name="text" class="tweet-text" id="tweet-text" placeholder="What are you humming about?" minlength="1" maxlength="140" required></textarea>
+        <form class="tweet-form" method="POST" action="/tweets/">
+          <textarea name="text" class="tweet-text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <hr />
           <div>
-            <button type="submit" class="button">Tweet</button>
+            <button type="submit" class="tweet-button">Tweet</button>
             <output name="counter" class="counter" for="tweet-text" >140</output>
           </div>
         </form>
       </section>
       <br />
-      <section class="tweet-container">
+      <section class="tweet-section"></section>
+      <!-- <section class="tweet-container">
         <article class="tweet">
           <header class="tweet-header">
             <img class="tweet-img" src=""> 
@@ -95,7 +97,7 @@
           <br />
         </article>
         <br>
-      </section>
+      </section> -->
       <br>
           <br>
           <br>
@@ -104,3 +106,4 @@
     </main>
   </body>
 </html>
+
