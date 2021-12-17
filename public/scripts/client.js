@@ -88,7 +88,7 @@ $('.tweet-form').on('submit', (e) => {
       return;
     } 
 
-    const data = $(this).serialize();
+    const data = $('.tweet-form').serialize();
     console.log(data);
 
     $.ajax({
@@ -98,12 +98,11 @@ $('.tweet-form').on('submit', (e) => {
       })
         .done(() => {
           loadTweets();
+          $(".tweet-text").val("");
+        $(".counter").text(140);
       })
         .fail((err) => {
           console.log(err)
-
-        $(".tweet-text").val("");
-        $(".counter").text(140);
     })
   }); 
 

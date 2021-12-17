@@ -135,16 +135,25 @@ textarea {
 }
 
 @media screen and (max-width: 481px) {
-    .new-tweet {
-      width: 50%;
-      flex-direction: column;
-    }
     textarea {
         width: 25%
     }
 
     hr {
-        width: 25%
+        width: 50%
+    }
+
+    .tweet-container {
+        width: 50%;
+    }
+    
+    .new-tweet {
+      width: 50%;
+      flex-direction: column;
+    }
+
+    .tweet-header .tweet-name .tweet-handle {
+        width: 50%;
     }
 
     .tweet-footer {
