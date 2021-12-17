@@ -73,7 +73,7 @@ textarea {
 }
 
 .tweet-container :hover {
-    box-shadow: 5px 10px #33313B;
+    box-shadow: 10px 0 5px -2px #888;
 }
 
 .tweet-header {
@@ -101,8 +101,7 @@ textarea {
     display: flex;
     justify-content: right;
     padding-left: 50%;
-    padding-right: 0;
-    word-wrap: break-word;
+    padding-right: 5%;
 }
 
 /* Footer */
@@ -136,7 +135,8 @@ textarea {
 
 @media screen and (max-width: 481px) {
     textarea {
-        width: 25%
+        width: 90%;
+        
     }
 
     hr {
@@ -144,7 +144,9 @@ textarea {
     }
 
     .tweet-container {
-        width: 50%;
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
     }
     
     .new-tweet {
@@ -152,28 +154,40 @@ textarea {
       flex-direction: column;
     }
 
-    .tweet-header .tweet-name .tweet-handle {
-        width: 50%;
+    .tweet-header  {
+        width: 75%;
+    }
+
+    .tweet-name {
+        flex-direction: column;
+    }
+    .tweet-handle {
+        padding-left: 5%;
+        flex-direction: column;
     }
 
     .tweet-footer {
-        width: 25%;
-    }
-
-    .tweet-icons {
         flex-direction: column;
-    }
-  };
-
-  @media screen and (max-width: 768px) {
-    header {
-      width: 50%
+        justify-content: center;
     }
   };
 
   @media screen and (max-width: 1024px) {
     header {
-        width: 75%;
-      }
-};
+      justify-content: left;
+    }
+
+    header-img {
+        justify-content: left;
+    }
+
+    .tweet-container {
+        justify-content: right;
+        flex-direction: row;
+    }
+  };
+
+  
+
+
 
